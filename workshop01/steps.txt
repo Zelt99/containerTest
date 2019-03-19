@@ -1,0 +1,12 @@
+Create a network
+    docker network create mynet
+
+Create a volume
+    docker volume create myvolume
+    docker inspect create myvolume    
+
+Deploy the database stackupiss/northwind-db:v1 (without exposing the port)
+    docker run -d -network mynet -v myvolume:/var/lib/mysql -name mydb stackupiss/northwind-db:v1
+
+Deploy the application
+    docker run -d \ -p 80:3000 -e DB_HOST=mydb \ --network mynet \ --name myapp zelt99/myapp:v1
