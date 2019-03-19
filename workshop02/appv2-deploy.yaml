@@ -27,7 +27,7 @@ spec:
       spec:
         containers:
           - name: myapp-container
-            image: stackupiss/northwind-app:v1
+            image: stackupiss/northwind-app:v2
             imagePullPolicy: IfNotPresent
             ports:
               - containerPort: 3000
@@ -41,23 +41,4 @@ spec:
 
             resources:
                 requests:
-                  cpu: "100m"    
-
----
-
-apiVersion: v1
-kind: Service
-
-metadata:
-  name: myapp-svc
-  namespace: myspace
-  labels:
-    name: myapp-svc
-
-spec:
-  type: LoadBalancer
-  selector: 
-    name: myapp-pod   
-  ports:
-  - port: 80
-    targetPort: 3000
+                  cpu: "100m"  
