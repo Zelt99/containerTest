@@ -1,0 +1,18 @@
+#Set up ISTIO
+kubectl apply -f
+<istio_home>/install/kubernetes/helm/istio/templates/crds.
+yaml
+
+kubectl apply -f <istio_home>/install/kubernetes/istiodemo.yaml
+
+#check whether it is set up properly
+kubectl get pods -n istio-system
+
+#build demo app
+docker build -t zelt99/pythonapp:v1 .
+
+#login into docker hub
+docker login
+
+#push demo app into docker hub
+docker push zelt99/pythonapp
