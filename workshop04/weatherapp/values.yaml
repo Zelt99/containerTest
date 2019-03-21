@@ -1,0 +1,33 @@
+# Default values for weatherapp.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: zelt99/weatherapp
+  tag: fixedv3
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+
+deployment:
+  containerPort: 3000
+
+
+APP_ID: f0792050e9fc324c036cc601ce6f352e  
+
+
+productionEnv: true
+productionReplicaCount: 2
+
+APP_DEFAULT_CITY: Japan
+
+gatewayhostname: "jp.157.230.73.88.nip.io"
+gatewayport: 80
